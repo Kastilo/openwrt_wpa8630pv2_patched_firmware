@@ -8,11 +8,10 @@
 
 ALL_CURL_OPTS := $(CURL_OPTS) -L --fail --create-dirs
 
-VERSION := 21.02.2
 BOARD := ath79
 SUBTARGET := tiny
 SOC := qca9563
-BUILDER := openwrt-imagebuilder-$(VERSION)-$(BOARD)-$(SUBTARGET).Linux-x86_64
+BUILDER := openwrt-imagebuilder-$(BOARD)-$(SUBTARGET).Linux-x86_64
 PROFILES := tplink_tl-wpa8630p-v2.0-eu tplink_tl-wpa8630p-v2.1-eu tplink_tl-wpa8630p-v2-int
 PACKAGES := luci
 EXTRA_IMAGE_NAME := patch
@@ -27,7 +26,7 @@ all: images
 
 
 $(BUILDER).tar.xz:
-	curl $(ALL_CURL_OPTS) -O https://downloads.openwrt.org/releases/$(VERSION)/targets/$(BOARD)/$(SUBTARGET)/$(BUILDER).tar.xz
+	curl $(ALL_CURL_OPTS) -O https://downloads.openwrt.org/snapshots/targets/$(BOARD)/$(SUBTARGET)/$(BUILDER).tar.xz
 
 
 $(BUILDER): $(BUILDER).tar.xz
