@@ -13,7 +13,8 @@ SUBTARGET := tiny
 SOC := qca9563
 BUILDER := openwrt-imagebuilder-$(BOARD)-$(SUBTARGET).Linux-x86_64
 PROFILES := tplink_tl-wpa8630p-v2.0-eu tplink_tl-wpa8630p-v2.1-eu tplink_tl-wpa8630p-v2-int
-PACKAGES := luci
+PACKAGES := luci-ssl open-plc-utils-plctool
+PACKAGES += -firewall -iptables -ip6tables -ppp -ppp-mod-pppoe -odhcpd-ipv6only -odhcp6c
 EXTRA_IMAGE_NAME := patch
 
 TOPDIR := $(CURDIR)/$(BUILDER)
@@ -26,7 +27,7 @@ all: images
 
 
 $(BUILDER).tar.xz:
-	curl $(ALL_CURL_OPTS) -O https://downloads.openwrt.org/snapshots/targets/ath79/tiny/openwrt-imagebuilder-ath79-tiny.Linux-x86_64.tar.xz
+	curl $(ALL_CURL_OPTS) -O https://downloads.openwrt.org/snapshots/targets/$(BOARD)/$(SUBTARGET)/$(BUILDER).tar.xz
 
 
 $(BUILDER): $(BUILDER).tar.xz
