@@ -26,7 +26,7 @@ all: images
 
 
 $(BUILDER).tar.xz:
-	curl $(ALL_CURL_OPTS) -O https://downloads.openwrt.org/snapshots/targets/$(BOARD)/$(SUBTARGET)/$(BUILDER).tar.xz
+	curl $(ALL_CURL_OPTS) -O https://downloads.openwrt.org/snapshots/targets/ath79/tiny/openwrt-imagebuilder-ath79-tiny.Linux-x86_64.tar.xz
 
 
 $(BUILDER): $(BUILDER).tar.xz
